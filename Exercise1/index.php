@@ -7,25 +7,12 @@ Plantear un segundo método de impresión que imprima el nombre y un mensaje si 
 -->
 
 <?php
+    require_once 'Empleado.php';
 
-class empleado {
-    
-    private $nombre;
-    private $sueldo;
-
-    public function initialize($nombre, $sueldo) {
-        $this->nombre = $nombre;
-        $this->sueldo = $sueldo;
-    }
-
-    public function imprimir() {
-        echo "Nombre: " . $this->nombre . "<br>";
-        if ($this->sueldo > 6000) {
-            echo "Tienes que pagar impuestos.<br>";
-        } else {
-            echo "No tienes que pagar impuestos.<br>";
-        }
-    }
-}
-
+    $empleado1 = new Empleado();
+    $empleado1->initialize("Ibai", 7000);
+    $empleado1->imprimir();
+    $empleado2 = new Empleado();
+    $empleado2->initialize("Iker", 5000);
+    $empleado2->imprimir();
 ?>

@@ -7,31 +7,8 @@ Escriba un programa que defina una clase de Forma con un constructor que reciba 
 
 <?php
 
-class Shape {
-    protected $height;
-    protected $width;
-
-    public function __construct($height, $width) {
-        $this->height = $height;
-        $this->width = $width;
-    }
-
-    public function area() {
-        return 0;
-    }
-}
-
-class Triangle extends Shape{
-    public function area() {
-        return $this->height * $this->width / 2;
-    }
-}
-
-class Rectangle extends Shape{
-    public function area() {
-        return $this->height * $this->width;
-    }
-}
+require_once 'Triangle.php';
+require_once 'Rectangle.php';
 
 $triangle1 = new Triangle(5, 10);
 
