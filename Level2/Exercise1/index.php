@@ -2,10 +2,13 @@
 session_start();
 require_once 'PokerDice.php';
 
-$_SESSION["TotalThrows"] = 0;
+if (!isset($_SESSION["TotalThrows"])) {
+    $_SESSION["TotalThrows"] = 0;
+}
 
-$dice = array(new PokerDice(), new PokerDice(), new PokerDice(), new PokerDice(), new PokerDice());
+$dice = array_fill(0, 5, new PokerDice());
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,6 +30,7 @@ $dice = array(new PokerDice(), new PokerDice(), new PokerDice(), new PokerDice()
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['run_script'])) {
         foreach ($dice as $die) {
             $die->throw();
+            $die->showShape();
             $_SESSION["TotalThrows"]++;
         }
         echo "<p>Total throws: " . getTotalThrows() . "</p>";

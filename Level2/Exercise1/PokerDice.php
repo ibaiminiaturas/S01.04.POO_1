@@ -17,23 +17,24 @@ Además, programa el método getTotalThrows que debe mostrar el número total de
 class PokerDice
 {
     private static $values = ["As", "K", "Q", "J", "9", "8"];
-    private static int $totalRolls = 0;
+    private int $value;
     public function throw()
     {
         $throw = rand(0, count(self::$values) - 1);
-        echo nl2br($this->shapeName($throw));
-        self::$totalRolls++;
+        $this->value = $throw;
     }
+
+    public function showShape(): void
+    {
+        echo nl2br($this->shapeName($this->value));
+    }
+
 
     private function shapeName(int $value): string
     {
         return "Ha salido un/a: " . self::$values[$value] . PHP_EOL;
     }
 
-    public static function getTotalThrows(): int
-    {
-        return self::$totalRolls;
-    }
 }
 
 
